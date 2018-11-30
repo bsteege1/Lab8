@@ -1,0 +1,5 @@
+﻿  BinaryTreeDriver.cpp
+c:\users\brandon\documents\github\lab8\lab8\randomutilities.h(31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\brandon\documents\github\lab8\lab8\binarytree.h(441): warning C4715: 'BinaryTree::leaves': not all control paths return a value
+c:\users\brandon\documents\github\lab8\lab8\binarytree.h(459): warning C4715: 'BinaryTree::leftmost': not all control paths return a value
+  Lab8.vcxproj -> C:\Users\Brandon\Documents\GitHub\Lab8\x64\Debug\Lab8.exe

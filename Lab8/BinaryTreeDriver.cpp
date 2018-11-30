@@ -1,4 +1,7 @@
 // BinaryTreeDriver.cpp
+//Brandon Steege
+//Lab 8
+//11/29/18
 
 // Exercise the BinaryTree class
 
@@ -91,7 +94,8 @@ main()
 			}
 			cout << endl;
 		}
-
+		//added by me to allow a postorder request for the post order function
+		//This else if will call the postorder function on the current tree if "postorder" is the typed command
 		else if (request == "postorder")
 		{
 			vector< short > traversal = theTree.postorder();

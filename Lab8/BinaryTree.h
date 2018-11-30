@@ -1,4 +1,7 @@
 // BinaryTree.h
+// Brandon Steege
+// Lab 8
+// 11/29/18
 
 // A binary tree class using an embedded class for the nodes.
 // All code is implemented here in the .h file.
@@ -378,36 +381,36 @@ BinaryTree::displayRight(std::ostream & outfile,
 	}
 }
 
-
+//determines the size of the tree
 long
 BinaryTree::size(const BinaryNode * subtree)
 {
-	if (subtree == NULL)
+	if (subtree == NULL) //checks to see if tree is empty
 	{
 		return 0;
 	}
 	else
 	{
-		return 1 + size(subtree->left_) + size(subtree->right_);
+		return 1 + size(subtree->left_) + size(subtree->right_); //adds the size of the left subtree and the size of the right subtree and 1 to account for the root
 	}
 	
 }
 
-
+//determines height of the tree
 long
 BinaryTree::height(const BinaryNode * subtree)
 {
-	if (subtree == NULL)
+	if (subtree == NULL) //checks to see if tree is empty
 	{
 		return 0;
 	}
-	else if(height(subtree->right_) > height(subtree->left_))
+	else if(height(subtree->right_) > height(subtree->left_)) //if the height of the right subtree is greater than the left
 	{
-		return 1 + height(subtree->right_);
+		return 1 + height(subtree->right_); //return 1 + the height of the right subtree
 	}
 	else
 	{
-		return 1 + height(subtree->left_);
+		return 1 + height(subtree->left_); //return 1 + the height of the left subtree
 	}
 }
 
@@ -415,25 +418,25 @@ BinaryTree::height(const BinaryNode * subtree)
 long
 BinaryTree::leaves(const BinaryNode * subtree)
 {
-	if (subtree == NULL)
+	if (subtree == NULL) //checks to see if the tree is empty
 	{
 		return 0;
 	}
-	else if (subtree->left_ == NULL && subtree->right_ == NULL)
+	else if (subtree->left_ == NULL && subtree->right_ == NULL) //checks to see if both left and right nodes are empty
 	{
 		return 1;
 	}
-	else if(subtree->left_ != NULL && subtree->right_ != NULL)
+	else if(subtree->left_ != NULL && subtree->right_ != NULL) //checks if nodes are not empty
 	{
-		return leaves(subtree->left_) + leaves(subtree->right_);
+		return leaves(subtree->left_) + leaves(subtree->right_); //adds the number of leaves in left subtree and right subtree
 	}
-	else if (subtree->right_ != NULL)
+	else if (subtree->right_ != NULL) //if only right is not null
 	{
-		return leaves(subtree->right_);
+		return leaves(subtree->right_); // returns number of leaves in right subtree
 	}
-	else if (subtree->left_ != NULL)
+	else if (subtree->left_ != NULL) //if only left is not null
 	{
-		return leaves(subtree->left_);
+		return leaves(subtree->left_); //returns number of leaves in left subtree
 	}
 }
 
@@ -441,17 +444,17 @@ BinaryTree::leaves(const BinaryNode * subtree)
 short
 BinaryTree::leftmost(const BinaryNode * subtree)
 {
-	if (subtree == NULL)
+	if (subtree == NULL) //checks to see if the tree is empty
 	{
 		return 0;
 	}
-	else if(subtree->left_ == NULL)
+	else if(subtree->left_ == NULL) //checks to see if left node is null
 	{
-		return subtree->entry_;
+		return subtree->entry_;//returns value of the leftmost node
 	}
-	else if(subtree->left_ != NULL)
+	else if(subtree->left_ != NULL) //checks to see if left node is not null
 	{
-		leftmost(subtree->left_);
+		leftmost(subtree->left_); //recursion on left node
 	}
 }
 
@@ -462,21 +465,22 @@ BinaryTree::preorder(std::vector< short > & traversal,
 {
 	if (subtree != NULL)
 	{
-		traversal.push_back(subtree->entry_);
-		preorder(traversal, subtree->left_);
-		preorder(traversal, subtree->right_);
+		traversal.push_back(subtree->entry_); //adds the current value in the node into the list
+		preorder(traversal, subtree->left_); //checks left node
+		preorder(traversal, subtree->right_); //checks right node
 	}
 }
 
+//This functions orders a tree in postorder
 void
 BinaryTree::postorder(std::vector< short > & traversal,
 	const BinaryNode * subtree)
 {
 	if (subtree != NULL)
 	{
-		postorder(traversal, subtree->left_);
-		postorder(traversal, subtree->right_);
-		traversal.push_back(subtree->entry_);
+		postorder(traversal, subtree->left_); //checks left node
+		postorder(traversal, subtree->right_); //checks right node
+		traversal.push_back(subtree->entry_); //adds the current value in the node to the list
 	}
 }
 
